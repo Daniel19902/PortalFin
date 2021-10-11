@@ -3,7 +3,7 @@ var app = (function (){
 
     let apiRegistro = registroUser;
     let apiLogin = loginUser;
-
+    let dataUser = null;
 
     return {
         registroUserP: function (name, mail, password, edad){
@@ -13,24 +13,21 @@ var app = (function (){
                 password: password,
                 age: parseInt(edad)
             };
-            console.log(user);
-            apiRegistro.registroUserPost(user);
+            apiRegistro.registroUserPost(user).then( function () {
+                alert("El usuario a sido registrado");
+                location.href = '../loginUser.html';
+            });
         },
 
         loginUser : function (mail, password){
             apiLogin.verificarUser(mail, password,function (error, data){
-                $('#correo').hide();
-                $('#password').hide();
-                $('#login').hide();
-
-                $('#name').html(data.name);
-                $('#mail').html(data.mail);
-                $('#age').html(data.age);
+                dataUser = data;
+                console.log(dataUser);
+                console.log(dataUser.name);
+                $("#main").hide();
+                $('#info-user').show();
+                $('#nameUser').html("Welcome "+dataUser.name);
             });
-        }
-
-
+        },
     };
-
-
 })();
