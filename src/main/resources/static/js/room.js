@@ -105,7 +105,6 @@ var room = (function (){
 
            stompClient.subscribe('/topic/finPartida.'+identificador, function (eventBody){
                let ms = JSON.parse(eventBody.body);
-               alert(ms);
                console.log(ms.id);
                console.log(player.id);
                if(ms.id == player.id){
