@@ -22,6 +22,8 @@ public class User {
     private String password;
     @Column(name = "EDAD")
     private int age;
+    @Column(name = "IDSALA")
+    private String idSala;
 
     public User(UserDto userDto) {
         UUID uuid = UUID.randomUUID();
@@ -30,9 +32,18 @@ public class User {
         this.mail = userDto.getMail();
         this.password = userDto.getPassword();
         this.age = userDto.getAge();
+        this.idSala = getIdSala();
     }
 
     public User() {
+    }
+
+    public String getIdSala() {
+        return idSala;
+    }
+
+    public void setIdSala(String idSala) {
+        this.idSala = idSala;
     }
 
     public String getId() {

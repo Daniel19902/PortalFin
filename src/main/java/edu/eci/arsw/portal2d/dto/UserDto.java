@@ -6,6 +6,7 @@ public class UserDto {
     private String mail;
     private String password;
     private int age;
+    private String idSala;
 
     public String getName() {
         return name;
@@ -13,6 +14,14 @@ public class UserDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getIdSala() {
+        return idSala;
+    }
+
+    public void setIdSala(String idSala) {
+        this.idSala = idSala;
     }
 
     public String getMail() {

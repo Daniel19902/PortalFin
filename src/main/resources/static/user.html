@@ -13,16 +13,30 @@
           href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css" />
     <script src="js/registroUser.js"></script>
     <script src="js/loginUser.js"></script>
+    <script src="js/room.js"></script>
     <script src="js/app.js"></script>
 </head>
-<body>
-
-  <div>
-    <p id="Username">hola</p>
-    <p id="mail">hola</p>
-    <p id="age">hola</p>
-  </div>
-
+<body onload="app.loadInfoUser()">
+<form class="form-user" id="info-user" >
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <span class="fs-4" id="nameUser">Welcome ???</span>
+            </a>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="jugar.html" class="nav-link active" aria-current="page">Jugar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="historial.html" class="nav-link">Historial</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Tienda</a>
+                </li>
+            </ul>
+        </header>
+    </div>
+</form>
 
 </body>
 </html>

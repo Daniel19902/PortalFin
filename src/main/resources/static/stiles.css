@@ -57,5 +57,9 @@ body {
     border-bottom-left-radius: 0;
 }
 
+table, th, td {
+    border: 1px solid black;
+}
+
 
 
