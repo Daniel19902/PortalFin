@@ -1,7 +1,6 @@
 package edu.eci.arsw.portal2d.controller;
 
 
-import edu.eci.arsw.portal2d.dto.PlayerDto;
 import edu.eci.arsw.portal2d.model.Player;
 import edu.eci.arsw.portal2d.persistence.Cache;
 import edu.eci.arsw.portal2d.sevices.UserService;
