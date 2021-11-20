@@ -20,6 +20,8 @@ public class Sala {
     private String codigoSala;
     @Column(name = "NUMEROUSERS")
     private int numeroUsers;
+    @Column(name = "IDCreador")
+    private String IDCreador;
 
 
     public Sala(SalaDto salaDto) {
@@ -34,6 +36,13 @@ public class Sala {
 
     }
 
+    public String getIDCreador() {
+        return IDCreador;
+    }
+
+    public void setIDCreador(String IDCreador) {
+        this.IDCreador = IDCreador;
+    }
 
     public String getId() {
         return id;

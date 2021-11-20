@@ -2,7 +2,7 @@
 
 var room = (function (){
 
-    let restApi = registroUser;
+    let restApi = apiPortal;
 
     class Player{
 

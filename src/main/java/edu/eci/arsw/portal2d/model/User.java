@@ -20,10 +20,6 @@ public class User {
     private String mail;
     @Column(name = "CONTRASENA")
     private String password;
-    @Column(name = "EDAD")
-    private int age;
-    @Column(name = "IDSALA")
-    private String idSala;
 
     public User(UserDto userDto) {
         UUID uuid = UUID.randomUUID();
@@ -31,19 +27,9 @@ public class User {
         this.name = userDto.getName();
         this.mail = userDto.getMail();
         this.password = userDto.getPassword();
-        this.age = userDto.getAge();
-        this.idSala = getIdSala();
     }
 
     public User() {
-    }
-
-    public String getIdSala() {
-        return idSala;
-    }
-
-    public void setIdSala(String idSala) {
-        this.idSala = idSala;
     }
 
     public String getId() {
@@ -78,11 +64,4 @@ public class User {
         this.password = password;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

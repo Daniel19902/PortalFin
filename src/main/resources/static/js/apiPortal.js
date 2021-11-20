@@ -1,16 +1,25 @@
 
-var registroUser = (function (){
+var apiPortal = (function (){
 
     return {
-        registroUserPost: function (data){
+
+        verificarUser : function (name, password,callback){
+            $.get("/api/portal/login/"+name+"/"+password, function (data){
+                callback(null,data);
+            }).fail(function (jqXHR, textStatus){
+                $('#password-bad').html("El nombre de usuario o la contraseña no son correctos");
+            });
+        },
+
+        crearUser: function (data){
             return  $.ajax({
-                url:"/api/portal",
+                url:"/api/portal/crearUser",
                 type: 'POST',
                 data: JSON.stringify(data),
                 contentType: "application/json"
 
             }).fail(function (jqXHR, textStatus){
-                console.log("error en el POST:"+jqXHR+" "+textStatus);
+                console.log("error al crear un usuario:");
             });
         },
 

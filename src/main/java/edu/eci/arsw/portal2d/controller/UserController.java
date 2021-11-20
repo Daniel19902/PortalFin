@@ -4,9 +4,12 @@ package edu.eci.arsw.portal2d.controller;
 import edu.eci.arsw.portal2d.dto.HistorialDto;
 import edu.eci.arsw.portal2d.dto.SalaDto;
 import edu.eci.arsw.portal2d.dto.UserDto;
+import edu.eci.arsw.portal2d.model.Personaje;
 import edu.eci.arsw.portal2d.model.Sala;
 import edu.eci.arsw.portal2d.model.User;
+import edu.eci.arsw.portal2d.repository.UserServiceException;
 import edu.eci.arsw.portal2d.sevices.HistorialService;
+import edu.eci.arsw.portal2d.sevices.PersonajeService;
 import edu.eci.arsw.portal2d.sevices.SalaService;
 import edu.eci.arsw.portal2d.sevices.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +30,18 @@ public class UserController {
     private SalaService salaService;
     @Autowired
     private HistorialService historialService;
+    @Autowired
+    private PersonajeService personajeService;
 
-    @PostMapping
+    @PostMapping("/crearUser")
     public ResponseEntity<?> createUser(@RequestBody UserDto userDto){
-        return new ResponseEntity (userService.save(userDto), HttpStatus.CREATED);
+        try {
+            User user = userService.save(userDto);
+            personajeService.savePersonaje(user.getId(), user.getName());
+            return new ResponseEntity<>("User creado", HttpStatus.CREATED);
+        }catch (UserServiceException e){
+            return new ResponseEntity<>("El nombre de usuario no esta permitido", HttpStatus.OK);
+        }
     }
 
     @PostMapping("/sala")
@@ -44,13 +55,18 @@ public class UserController {
         return new ResponseEntity ("User Asignado a la sala"+idSala, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{mail}/{password}")
-    public ResponseEntity<?> loginUser(@PathVariable String mail, @PathVariable String password){
-        Optional<User> user = userService.verificarMail(mail,password);
-        if(userService.verificarPassword(password, user.get())){
-            return new ResponseEntity<> (user, HttpStatus.OK);
+    @GetMapping(value = "login/{name}/{password}")
+    public ResponseEntity<?> loginUser(@PathVariable String name, @PathVariable String password){
+        try {
+            Optional<User> user = userService.verificarName(name);
+            if(userService.verificarPassword(password, user.get())){
+                Optional<Personaje> personaje = personajeService.getPersonaje(user.get().getId());
+                return new ResponseEntity<> (personaje, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("LA CONTRASEÑA NO SE CORRECTA", HttpStatus.NOT_ACCEPTABLE);
+        }catch (UserServiceException e){
+            return new ResponseEntity<>(e.loginServiceException(),HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>("La contraseña no es correcta",HttpStatus.OK);
     }
 
     @GetMapping
