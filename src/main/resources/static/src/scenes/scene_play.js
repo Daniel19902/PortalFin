@@ -1,8 +1,10 @@
 import Personaje from "../gameObjects/personaje.js";
 import Portal from "../gameObjects/portal.js";
+//import room from "../../js/room.js";
 
 var azul;
 var naranja;
+var ron = portal;
 
 class Scene_play extends Phaser.Scene{
     constructor(){
@@ -89,12 +91,17 @@ class Scene_play extends Phaser.Scene{
     }
     update(){
         if(this.cursor.left.isDown){
-
-            this.personaje.body.setVelocityX(-150);
-            this.personaje.flipX = true;
+            if(ron.getPartida()) {
+                this.personaje.body.setVelocityX(-150);
+                this.personaje.flipX = true;
+                ron.moverPerspnaje(this.personaje.body.x, this.personaje.body.y);
+            }
         } else if(this.cursor.right.isDown){
-            this.personaje.body.setVelocityX(150);
-            this.personaje.flipX = false;
+            if(ron.getPartida()) {
+                this.personaje.body.setVelocityX(150);
+                this.personaje.flipX = false;
+                ron.moverPerspnaje(this.personaje.body.x, this.personaje.body.y);
+            }
         }else{
             this.personaje.body.setVelocityX(0);
         }

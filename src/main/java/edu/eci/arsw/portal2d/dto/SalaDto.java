@@ -5,6 +5,7 @@ public class SalaDto {
 
     private String nombre;
     private int numeroUsers;
+    private String IDCreador;
 
 
     public String getNombre() {
@@ -21,5 +22,13 @@ public class SalaDto {
 
     public void setNumeroUsers(int numeroUsers) {
         this.numeroUsers = numeroUsers;
+    }
+
+    public String getIDCreador() {
+        return IDCreador;
+    }
+
+    public void setIDCreador(String idCreador) {
+        this.IDCreador = idCreador;
     }
 }

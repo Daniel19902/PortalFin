@@ -1,6 +1,7 @@
 package edu.eci.arsw.portal2d.model;
 
 import edu.eci.arsw.portal2d.dto.MapaDto;
+import edu.eci.arsw.portal2d.dto.PlayerDto;
 import edu.eci.arsw.portal2d.dto.Punto;
 
 import java.util.HashMap;
@@ -12,11 +13,19 @@ public class Partida {
     private Integer podio = 0;
     private Integer oro = 0;
     private Integer experiencia = 0;
-    private final HashMap<String, Integer> podioPlayers = new HashMap<>();
+    private final HashMap<String, PlayerDto> players = new HashMap<>();
 
 
     public Partida() {
-        this.mapa = new MapaDto(new Punto(350,0), new Punto(960,0));
+        this.mapa = new MapaDto(new Punto(20,20), new Punto(960,0));
+    }
+
+    public HashMap<String, PlayerDto> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(String idSala, PlayerDto player){
+        players.put(idSala, player);
     }
 
     public Integer getDuration() {
@@ -39,8 +48,8 @@ public class Partida {
         return podio;
     }
 
-    public void setPodio(Integer podio) {
-        this.podio += podio;
+    public void setPodio() {
+        this.podio += 1;
     }
 
     public Integer getOro() {
@@ -49,14 +58,6 @@ public class Partida {
 
     public void setOro(Integer oro) {
         this.oro = oro;
-    }
-
-    public int getPodioPlayers(String idUser) {
-        return podioPlayers.get(idUser);
-    }
-
-    public void setPodioPlayers(String idPlayer, int podio) {
-        this.podioPlayers.put(idPlayer,podio);
     }
 
     public Integer getExperiencia() {

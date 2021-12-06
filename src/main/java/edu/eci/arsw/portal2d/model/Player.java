@@ -15,7 +15,7 @@ public class Player {
 
     public Player(PlayerDto playerDto) {
         this.idSala = playerDto.getIdSala();
-        this.id = playerDto.getId();
+        this.id = playerDto.getName();
         this.x = playerDto.getX();
         this.y = playerDto.getY();
         this.lugar = playerDto.getLugar();
@@ -25,6 +25,11 @@ public class Player {
         this.id = idPlayer;
         this.idSala = idSala;
     }
+
+    public Player(String idPlayer){
+        this.id = idPlayer;
+    }
+
 
     public String getId() {
         return id;

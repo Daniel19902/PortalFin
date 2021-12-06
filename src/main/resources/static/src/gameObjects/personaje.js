@@ -11,6 +11,14 @@ class Personaje extends Phaser.GameObjects.Sprite{
         this.inPortal=false;
         
     }
+
+    getPosicion(){
+
+    }
+}
+
+function getPosicion(){
+
 }
 
 export default Personaje;

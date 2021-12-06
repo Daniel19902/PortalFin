@@ -11,6 +11,14 @@ var apiPortal = (function (){
             });
         },
 
+        getPersonaje : function (idUser, callback){
+            $.get("/api/portal/getUser/"+idUser, function (data){
+                callback(null, data);
+            }).fail(function (jqXHR, textStatus){
+
+            });
+        },
+
         crearUser: function (data){
             return  $.ajax({
                 url:"/api/portal/crearUser",
@@ -42,13 +50,6 @@ var apiPortal = (function (){
             });
         },
 
-        getCacheUser: function (callback){
-            $.get("/api/portal/getCacheUser", function (data){
-               callback(null, data);
-            });
-        },
-
-
         crearSala: function (data){
             console.log(data);
             return $.ajax({
@@ -61,9 +62,9 @@ var apiPortal = (function (){
             });
         },
 
-        updateSalaUser: function (idUser, idSala){
+        asignarSala: function (idSala, idPlayer){
             return $.ajax({
-               url: "api/portal/asignarSala/"+idUser+"/"+idSala,
+               url: "api/portal/asignarSala/"+idPlayer+"/"+idSala,
                type: 'PUT',
                contentType: "application/json"
             }).fail(function (jqXHR, textStatus){
@@ -102,6 +103,12 @@ var apiPortal = (function (){
             $.get("/api/portal/getHistorial/"+idUser, function (data){
                 callback(null, data);
             })
+        },
+
+
+        getUsersSala : function (){
+
+
         }
     }
 

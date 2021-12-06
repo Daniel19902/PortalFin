@@ -1,25 +1,37 @@
 package edu.eci.arsw.portal2d.dto;
 
 public class PlayerDto {
+
+
     private String idSala;
-    private String id;
+    private String name;
     private int x = 0;
     private int y = 0;
     private int lugar = 0;
+    private int podio = 0;
+
     public  PlayerDto(){
 
     }
 
     public PlayerDto(String id) {
-        this.id = id;
+        this.name = id;
     }
 
-    public String getId() {
-        return id;
+    public int getPodio() {
+        return podio;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPodio(int podio) {
+        this.podio = podio;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getX() {

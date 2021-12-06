@@ -12,6 +12,9 @@
     <link rel="stylesheet"
           href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css" />
 
+    <script src="js/apiPortal.js"></script>
+    <script src="js/jugar.js"></script>
+
 </head>
 <body class="text-center">
 <main class="form-signin">
@@ -23,7 +26,7 @@
         <div>
             <label for="num-jugadores"></label><input type="number" class="form-control" id="num-jugadores" placeholder="Num. jugadores">
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="button" onclick="app.crearSala($('#name').val(), $('#num-jugadores').val())">Crear Sala</button>
+        <button class="w-100 btn btn-lg btn-primary" type="button" onclick="jugar.crearSala($('#name').val(), $('#num-jugadores').val())">Crear Sala</button>
         <button class="w-100 btn btn-lg btn-primary" type="button" onclick="location.href = 'loginUser.html'">Cancelar</button>
     </form>
 </main>

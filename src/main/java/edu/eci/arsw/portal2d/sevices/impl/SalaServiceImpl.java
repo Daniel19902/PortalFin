@@ -48,4 +48,9 @@ public class SalaServiceImpl implements SalaService {
         return cache.getSala();
     }
 
+    @Override
+    public void crearPartida(String idSala, String idUser) {
+        cache.almacenarPartida(idSala, idUser);
+    }
+
 }

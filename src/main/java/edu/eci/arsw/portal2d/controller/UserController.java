@@ -46,7 +46,20 @@ public class UserController {
 
     @PostMapping("/sala")
     public ResponseEntity<?> createSala(@RequestBody SalaDto salaDto){
-        return new ResponseEntity (salaService.crearSala(salaDto), HttpStatus.CREATED);
+        try{
+            System.out.println(salaDto.getNombre()+" "+salaDto.getIDCreador());
+            Sala sala = salaService.crearSala(salaDto);
+            salaService.crearPartida(sala.getId(), sala.getIDCreador());
+            userService.asignarSala(sala.getIDCreador(), sala.getId());
+            return new ResponseEntity<>("Sala creada", HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.toString(), HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/getUser/{idUser}")
+    public ResponseEntity<?> getUser(@PathVariable String idUser){
+        return new ResponseEntity<>(userService.getPersonaje(idUser).get(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "asignarSala/{idUser}/{idSala}")
@@ -63,7 +76,7 @@ public class UserController {
                 Optional<Personaje> personaje = personajeService.getPersonaje(user.get().getId());
                 return new ResponseEntity<> (personaje, HttpStatus.OK);
             }
-            return new ResponseEntity<>("LA CONTRASEÑA NO SE CORRECTA", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>("LA CONTRASEÑA NO ES CORRECTA", HttpStatus.NOT_ACCEPTABLE);
         }catch (UserServiceException e){
             return new ResponseEntity<>(e.loginServiceException(),HttpStatus.NOT_FOUND);
         }

@@ -7,6 +7,7 @@ import edu.eci.arsw.portal2d.model.Player;
 import edu.eci.arsw.portal2d.model.Sala;
 import edu.eci.arsw.portal2d.model.User;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public interface Cache {
@@ -21,14 +22,20 @@ public interface Cache {
 
     void crearJugadores(String idSala, List<String> numeroJugadores);
 
-    List<Player> getPlayers(String idSala);
+    List<PlayerDto> players(String idSala);
 
     void updatePlayer(String idSala, Player player);
 
-    void almacenarPartida(String idSala);
+    void almacenarPartida(String idSala, String idUser);
 
     boolean finPartida(Player player);
 
+    List<PlayerDto> iniciarPartida(String idSala);
+
     HistorialDto infoPartida(String idSala, String idUser);
+
+    void crearJugador(String idSala, String name);
+
+    LinkedList<PlayerDto> moverPlayer(int x, int y, String name, String idSala);
 
 }

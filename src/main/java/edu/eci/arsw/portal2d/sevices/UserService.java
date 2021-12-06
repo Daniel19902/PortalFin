@@ -2,6 +2,7 @@ package edu.eci.arsw.portal2d.sevices;
 
 import edu.eci.arsw.portal2d.dto.HistorialDto;
 import edu.eci.arsw.portal2d.dto.UserDto;
+import edu.eci.arsw.portal2d.model.Personaje;
 import edu.eci.arsw.portal2d.model.Sala;
 import edu.eci.arsw.portal2d.model.User;
 import edu.eci.arsw.portal2d.repository.UserServiceException;
@@ -30,4 +31,5 @@ public interface UserService {
 
     List<String> findPlayers(String idSala);
 
+    Optional<Personaje> getPersonaje(String idUser);
 }

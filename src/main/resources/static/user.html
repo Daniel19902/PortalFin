@@ -14,28 +14,32 @@
     <script src="js/user.js"></script>
 
 </head>
-<body>
+<body onload="user.init()">
+
     <form class="forma-perfil">
         <div class="perfil">
             <div class="name-user" id="name">
-                <h1 class="display-4 name-style"> Darkeater </h1>
+                <h1 class="display-4 name-style" id="nombre-id"> Darkeater </h1>
             </div>
             <img src="assets/darkeater.jpg" class="rounded imagen" alt="dark">
-            <div class="rounded-circle nivel">5</div>
+            <div class="rounded-circle nivel" id="nivel-id">5</div>
             <div class="progress bar-progress" style="height:20px">
                 <div style="background: darkcyan"></div>
-                <div class="progress-bar bar-p" >20/100</div>
+                <div class="progress-bar bar-p" id="exp-id">20/100</div>
             </div>
-            <div class="oro"> Oro: 0</div>
+            <div class="oro" id="oro-id"> Oro: 0</div>
         </div>
         <div class="jugar" >
             <h1 class="display-1 title-portal"> Portal </h1>
-            <div class="jugar-button d-grid"><button type="button" class="btn btn-primary btn-lg" onclick=" location.href = 'jugar.html'">Jugar</button></div>
+            <div class="jugar-button d-grid"><button type="button" class="btn btn-primary btn-lg" onclick=" location.href = 'jugar.html'" id="jugar-id">Jugar</button></div>
             <div class="historial-tienda form-button d-grid">
-                <button type="button" class="btn btn-primary btn-lg" >Historial</button>
-                <button type="button" class="btn btn-primary btn-lg" >Tienda</button>
+                <button type="button" class="btn btn-primary btn-lg" id="historial-id">Historial</button>
+                <button type="button" class="btn btn-primary btn-lg" id="tienda-id">Tienda</button>
+                <button type="button" class="btn btn-primary btn-lg"> hola </button>
             </div>
         </div>
     </form>
+
 </body>
+
 </html>

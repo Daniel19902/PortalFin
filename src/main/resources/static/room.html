@@ -8,32 +8,60 @@
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="stiles.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="styles/chat.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="styles/portal.css" media="screen"/>
 
     <link rel="stylesheet"
           href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css" />
+
     <script src="js/apiPortal.js"></script>
-    <script src="js/loginUser.js"></script>
     <script src="js/room.js"></script>
-    <script src="js/app.js"></script>
 
 </head>
-<body onload="app.loadInfoSala()">
-    <form style="display: block" id="tablaJugadores">
-        <h1 id="funca"> funca </h1>
-        <h2 id="name"> Nombre jugador</h2>
-        <h1 id="id">id user</h1>
-        <h1 id="numeroUsers"></h1>
-        <button type="button" id="jugar" onclick="app.empezarPartida()">Empezar partida</button>
+<body onload="room.init()">
+    <form id="room-info" style="display: block">
+        <div id="info">
+            <h1 id="funca"> funca </h1>
+            <h2 id="name"> Nombre jugador</h2>
+            <h1 id="id">id user</h1>
+            <h1 id="num-players"></h1>
+            <div>
+                <button type="button" id="jugar" onclick="room.iniciarPartida()">Empezar partida</button>
+            </div>
+        </div>
+
+        <table id="table-jugadores">
+            <tr>
+                <th> Name </th>
+            </tr>
+            <tbody id = "info-jugadores">
+
+            </tbody>
+
+        </table>
+
+        <img src="/static/assets/darkeater.jpg" width="50%">
+        <div id="wrapper">
+            <div id="menu">
+                <div style="clear:both"></div>
+            </div>
+
+            <textarea id="chatbox" disabled></textarea>
+
+            <form name="message" action="">
+                <input name="usermsg" type="text" id="usermsg" size="63" />
+                <button type="button"  id="submitmsg" onclick="room.mensaje($('#usermsg').val())">Send</button>
+            </form>
+        </div>
     </form>
 
-    <form style="display: block" id = "jugar-mapa">
-
-        <canvas id="canvas" width="960" height="150" style="border:1px solid #000000;"></canvas>
-        <script src="src/phaser.min.js"></script>
-        <script src="src/scenes/init.js" type="module"></script>
-
+    <form id="portal" style="display: none">
+        <!--<canvas id="canvas" style="border:5px solid #000000;" height="608px" width="960" class="canvas"></canvas>
+        <script src="src/phaser.min.js" style="display:none;"></script>
+        <script src="src/scenes/init.js" type="module" style="display:none;" ></script>-->
     </form>
+
+
 
 </body>
 </html>

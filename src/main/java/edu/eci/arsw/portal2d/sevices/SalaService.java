@@ -20,4 +20,6 @@ public interface SalaService {
 
     Sala getSala();
 
+    void crearPartida(String idSala, String idUser);
+
 }

@@ -20,8 +20,8 @@ public class Sala {
     private String codigoSala;
     @Column(name = "NUMEROUSERS")
     private int numeroUsers;
-    @Column(name = "IDCreador")
-    private String IDCreador;
+    @Column(name = "IDCREADOR")
+    private String IDCREADOR;
 
 
     public Sala(SalaDto salaDto) {
@@ -30,6 +30,7 @@ public class Sala {
         this.codigoSala = uuid.toString();
         this.nombre = salaDto.getNombre();
         this.numeroUsers = salaDto.getNumeroUsers();
+        this.IDCREADOR = salaDto.getIDCreador();
     }
 
     public Sala() {
@@ -37,11 +38,11 @@ public class Sala {
     }
 
     public String getIDCreador() {
-        return IDCreador;
+        return IDCREADOR;
     }
 
     public void setIDCreador(String IDCreador) {
-        this.IDCreador = IDCreador;
+        this.IDCREADOR = IDCreador;
     }
 
     public String getId() {

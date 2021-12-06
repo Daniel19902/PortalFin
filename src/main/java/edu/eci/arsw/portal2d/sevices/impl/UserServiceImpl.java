@@ -1,8 +1,11 @@
 package edu.eci.arsw.portal2d.sevices.impl;
 
 import edu.eci.arsw.portal2d.dto.UserDto;
+import edu.eci.arsw.portal2d.model.Personaje;
+import edu.eci.arsw.portal2d.model.Player;
 import edu.eci.arsw.portal2d.model.User;
 import edu.eci.arsw.portal2d.persistence.Cache;
+import edu.eci.arsw.portal2d.repository.PersonajeRepository;
 import edu.eci.arsw.portal2d.repository.UserRepository;
 import edu.eci.arsw.portal2d.repository.UserServiceException;
 import edu.eci.arsw.portal2d.sevices.UserService;
@@ -20,6 +23,9 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private Cache cache;
+
+    @Autowired
+    private PersonajeRepository personajeRepository;
 
     @Override
     public User save(UserDto userDto) throws UserServiceException {
@@ -40,17 +46,11 @@ public class UserServiceImpl implements UserService {
         return Objects.equals(user.getPassword(), password);
     }
 
-
-
-
-
-
-
     @Override
     public void asignarSala(String idUser, String salaID) {
-        User user = userRepository.findById(idUser).get();
-        //user.setIdSala(salaID);
-        userRepository.save(user);
+        Personaje user = personajeRepository.findById(idUser).get();
+        user.setIdSala(salaID);
+        personajeRepository.save(user);
     }
 
     @Override
@@ -85,6 +85,11 @@ public class UserServiceImpl implements UserService {
 
          */
         return null;
+    }
+
+    @Override
+    public Optional<Personaje> getPersonaje(String idUser) {
+        return personajeRepository.findById(idUser);
     }
 
 }
