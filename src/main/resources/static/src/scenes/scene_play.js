@@ -29,7 +29,7 @@ class Scene_play extends Phaser.Scene{
         this.bloques.setCollisionByProperty({solido:true});
 
         // vrear personaje
-        this.personaje = new Personaje(this,0,0,"goku")
+        this.personaje = new Personaje(this,0,0,"goku");
 
         this.anims.create({
                 key: 'caminar',
@@ -79,14 +79,6 @@ class Scene_play extends Phaser.Scene{
         this.physics.add.overlap(this.personaje, azul, colisionPortalAndPersonaje, overlapPortalAndPersonaje, this);
 
         this.physics.add.overlap(this.personaje, naranja, colisionPortalAndPersonaje, overlapPortalAndPersonaje, this);
-
-        
-        
-        
-
-        
-
-        
 
     }
     update(){

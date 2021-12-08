@@ -53,18 +53,24 @@ public class CacheImpl implements Cache{
         this.salas.put(idSala, players);
     }
 
-    public boolean finPartida(PlayerDto player, Partida partida){
-        /*
-        Partida partidaPlayer = partida.get(player.getIdSala());
-        if(player.getX() >= partidaPlayer.getMapa().getPuntoFin().getX()){
-            partidaPlayer.setPodio(1);
-            //partidaPlayer.setPodioPlayers(player.getId(), partidaPlayer.getPodio());
-        }
-        return player.getX() >= partida.get(player.getIdSala()).getMapa().getPuntoFin().getX();
-         */
+    public void bonus(PlayerDto player, Partida partida){
+        partida.setPodio();
+        player.setPodio(partida.getPodio());
+        int exp = (int)Math.ceil(partida.getExperiencia()/player.getPodio());
+        int oro = (int)Math.ceil(partida.getOro()/player.getPodio());
+        player.setExpe(exp);
+        player.setOro(oro);
+    }
+
+    @Override
+    public boolean finPartida(String idSala, String namePlayer){
+        Partida partida = salasPartida.get(idSala);
+        PlayerDto player = partida.getPlayers().get(namePlayer);
+        System.out.println("x: "+player.getX() + " " + partida.getMapa().getPuntoFin().getX()+ "y: "+player.getY()+" "+ partida.getMapa().getPuntoFin().getY());
         if (player.getX() >= partida.getMapa().getPuntoFin().getX() && player.getY() >= partida.getMapa().getPuntoFin().getY()){
-            partida.setPodio();
-            player.setPodio(partida.getPodio());
+            if (player.getPodio() == 0) {
+                bonus(player, partida);
+            }
             return true;
         }
         return false;
@@ -96,10 +102,6 @@ public class CacheImpl implements Cache{
         //partida.put(idSala, new Partida());
     }
 
-    @Override
-    public boolean finPartida(Player player) {
-        return false;
-    }
 
     public void crearJugador(String idSala, String namePlayer){
         //almacenarPartida(idSala, namePlayer);
@@ -120,7 +122,12 @@ public class CacheImpl implements Cache{
         System.out.println(player);
         player.setY(y);
         player.setX(x);
-        boolean f = finPartida(player, partida);
+        return new LinkedList<>(partida.getPlayers().values());
+    }
+
+    @Override
+    public List<PlayerDto> infoPodioPlayers(String idSala) {
+        Partida partida = salasPartida.get(idSala);
         return new LinkedList<>(partida.getPlayers().values());
     }
 

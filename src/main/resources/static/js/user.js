@@ -9,6 +9,10 @@ var user = (function (){
     let experiencia = function (infoUser){
         let exp = infoUser.nivel * expRequerida;
         $('#exp-id').html(infoUser.experiencia +" / "+exp);
+        let expUser = Math.trunc(expRequerida*infoUser.experiencia / exp);
+        console.log(String(exp+"%"));
+        document.getElementById("exp-id").style.setProperty('--progreso-div', String(expUser+"%"));
+
     }
 
 
@@ -20,6 +24,7 @@ var user = (function (){
             $('#oro-id').html("Oro: "+infoUser.oro);
             experiencia(infoUser);
             $('#nivel-id').html(infoUser.nivel);
+
         }
     }
 

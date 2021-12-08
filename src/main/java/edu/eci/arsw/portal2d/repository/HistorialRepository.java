@@ -7,4 +7,6 @@ public interface HistorialRepository extends CrudRepository<Historial, String> {
 
     Iterable<Historial> findAllByIdUser(String idUser);
 
+    Iterable<Historial> findHistorialByNombre(String nombre);
+
 }

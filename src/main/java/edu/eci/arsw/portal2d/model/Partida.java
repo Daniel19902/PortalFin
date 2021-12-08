@@ -11,13 +11,13 @@ public class Partida {
     private Integer duration;
     private MapaDto mapa;
     private Integer podio = 0;
-    private Integer oro = 0;
-    private Integer experiencia = 0;
+    private Integer oro = 100;
+    private Integer experiencia = 100;
     private final HashMap<String, PlayerDto> players = new HashMap<>();
 
 
     public Partida() {
-        this.mapa = new MapaDto(new Punto(20,20), new Punto(960,0));
+        this.mapa = new MapaDto(new Punto(0,468), new Punto(920,468));
     }
 
     public HashMap<String, PlayerDto> getPlayers() {

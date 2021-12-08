@@ -28,7 +28,7 @@ public interface Cache {
 
     void almacenarPartida(String idSala, String idUser);
 
-    boolean finPartida(Player player);
+    boolean finPartida(String idSala, String namePlayer);
 
     List<PlayerDto> iniciarPartida(String idSala);
 
@@ -38,4 +38,5 @@ public interface Cache {
 
     LinkedList<PlayerDto> moverPlayer(int x, int y, String name, String idSala);
 
+    List<PlayerDto> infoPodioPlayers(String idSala);
 }

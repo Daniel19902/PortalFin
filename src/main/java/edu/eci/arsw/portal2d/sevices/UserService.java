@@ -32,4 +32,5 @@ public interface UserService {
     List<String> findPlayers(String idSala);
 
     Optional<Personaje> getPersonaje(String idUser);
+
 }

@@ -10,4 +10,6 @@ public interface PersonajeService {
 
     Optional<Personaje> getPersonaje(String id);
 
+    Personaje upDateBonus(String name, int oro, int exp);
+
 }

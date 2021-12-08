@@ -16,7 +16,7 @@ public class Historial {
     @Id
     @Column(name = "ID")
     private String id;
-    @Column(name = "IDuser")
+    @Column(name = "iduser")
     private String idUser;
     @Column(name = "nombre")
     private String nombre;

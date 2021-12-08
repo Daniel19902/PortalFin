@@ -7,5 +7,5 @@ public interface HistorialService {
 
     Historial setHistorial(HistorialDto historialDto);
 
-    Iterable<Historial> getHistorial(String idUser);
+    Iterable<Historial> getHistorial(String name);
 }

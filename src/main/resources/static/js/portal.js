@@ -20,6 +20,12 @@ var portal = (function (){
         }
     }
 
+    let finPartida = function (name){
+        if(name == infoUser.nombre) {
+            location.href = 'score.html';
+        }
+    }
+
     let connectAndSubscribe = function (){
         console.log('Connecting to ws...');
         let socket = new SockJS('/stompendpoint');
@@ -38,6 +44,12 @@ var portal = (function (){
                 console.log(msg);
                 paintPlayers(msg);
             });
+
+            stompClient.subscribe('/topic/finPartida.'+identificador, function (eventBody){
+                let name = eventBody.body;
+                console.log(name);
+                finPartida(name);
+            })
 
         });
     };

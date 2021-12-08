@@ -43,7 +43,7 @@ public class Personaje {
     }
 
     public void setNivel(int nivel) {
-        this.nivel = nivel;
+        this.nivel += nivel;
     }
 
     public String getId() {
@@ -67,7 +67,7 @@ public class Personaje {
     }
 
     public void setOro(int oro) {
-        this.oro = oro;
+        this.oro += oro;
     }
 
     public int getExperiencia() {
@@ -75,6 +75,10 @@ public class Personaje {
     }
 
     public void setExperiencia(int experiencia) {
+        this.experiencia += experiencia;
+    }
+
+    public void setExperienciaNivel(int experiencia) {
         this.experiencia = experiencia;
     }
 

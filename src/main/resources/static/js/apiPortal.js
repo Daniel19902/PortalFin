@@ -99,16 +99,26 @@ var apiPortal = (function (){
             });
         },
 
-        getHistorial : function (idUser, callback){
-            $.get("/api/portal/getHistorial/"+idUser, function (data){
+        getHistorial : function (name, callback){
+            $.get("/api/portal/getHistorial/"+name, function (data){
                 callback(null, data);
-            })
+            });
         },
 
+        infoPodio : function (idSala, callback){
+            $.get("/api/portal/podio/"+idSala, function (data){
+                callback(null, data);
+            });
+        },
 
-        getUsersSala : function (){
-
-
+        updateBonus : function (name, oro, expe){
+            return $.ajax({
+                url: "api/portal/update/bonus/"+name+"/"+oro+"/"+expe,
+                type: 'PUT',
+                contentType: "application/json"
+            }).fail(function (jqXHR, textStatus){
+                console.log("error en el bonus:"+jqXHR+" "+textStatus);
+            });
         }
     }
 

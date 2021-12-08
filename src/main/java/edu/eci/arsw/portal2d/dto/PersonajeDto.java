@@ -7,7 +7,7 @@ public class PersonajeDto {
     private int oro = 0;
     private int experiencia = 0;
     private String idSala = "";
-    private int nivel = 0;
+    private int nivel = 1;
 
 
     public PersonajeDto(String id, String name){
@@ -20,7 +20,7 @@ public class PersonajeDto {
     }
 
     public void setNivel(int nivel) {
-        this.nivel = nivel;
+        this.nivel += nivel;
     }
 
     public String getId() {
@@ -44,7 +44,7 @@ public class PersonajeDto {
     }
 
     public void setOro(int oro) {
-        this.oro = oro;
+        this.oro += oro;
     }
 
     public int getExperiencia() {
@@ -52,7 +52,7 @@ public class PersonajeDto {
     }
 
     public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
+        this.experiencia += experiencia;
     }
 
     public String getIdSala() {
@@ -61,5 +61,9 @@ public class PersonajeDto {
 
     public void setIdSala(String idSala) {
         this.idSala = idSala;
+    }
+
+    public void setExperienciaNivel(int experiencia) {
+        this.experiencia = experiencia;
     }
 }

@@ -20,8 +20,8 @@ public class HistorialImpl implements HistorialService {
     }
 
     @Override
-    public Iterable<Historial> getHistorial(String idUser) {
-        return historialRepository.findAllByIdUser(idUser);
+    public Iterable<Historial> getHistorial(String name) {
+        return historialRepository.findHistorialByNombre(name);
     }
 
 }

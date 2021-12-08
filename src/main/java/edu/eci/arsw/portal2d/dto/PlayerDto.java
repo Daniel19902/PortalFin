@@ -7,11 +7,29 @@ public class PlayerDto {
     private String name;
     private int x = 0;
     private int y = 0;
+    private int oro = 0;
+    private int expe = 0;
     private int lugar = 0;
     private int podio = 0;
 
     public  PlayerDto(){
 
+    }
+
+    public int getOro() {
+        return oro;
+    }
+
+    public void setOro(int oro) {
+        this.oro = oro;
+    }
+
+    public int getExpe() {
+        return expe;
+    }
+
+    public void setExpe(int expe) {
+        this.expe = expe;
     }
 
     public PlayerDto(String id) {

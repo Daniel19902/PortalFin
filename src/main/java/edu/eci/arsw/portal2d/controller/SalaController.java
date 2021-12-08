@@ -54,6 +54,9 @@ public class SalaController {
         */
         System.out.println(x+" "+y+" "+namePlayer);
         messagingTemplate.convertAndSend("/topic/paintPlayer."+idSala, cache.moverPlayer((int)x,(int)y,namePlayer,idSala));
+        if (cache.finPartida(idSala, namePlayer)){
+            messagingTemplate.convertAndSend("/topic/finPartida."+idSala, namePlayer);
+        }
     }
 
     @MessageMapping("/infoPlayer.{idSala}/{idUser}")

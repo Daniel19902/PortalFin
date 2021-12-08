@@ -1,5 +1,6 @@
 package edu.eci.arsw.portal2d.sevices.impl;
 
+import edu.eci.arsw.portal2d.dto.PlayerDto;
 import edu.eci.arsw.portal2d.dto.SalaDto;
 import edu.eci.arsw.portal2d.model.Sala;
 
@@ -51,6 +52,11 @@ public class SalaServiceImpl implements SalaService {
     @Override
     public void crearPartida(String idSala, String idUser) {
         cache.almacenarPartida(idSala, idUser);
+    }
+
+    @Override
+    public List<PlayerDto> infoPodioPlayers(String idSala) {
+        return cache.infoPodioPlayers(idSala);
     }
 
 }

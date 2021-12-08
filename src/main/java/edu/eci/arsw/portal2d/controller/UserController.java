@@ -117,14 +117,23 @@ public class UserController {
 
     @PostMapping("/add/historial")
     public ResponseEntity<?> setHistorial(@RequestBody HistorialDto historialDto){
-
         return new ResponseEntity(historialService.setHistorial(historialDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/getHistorial/{idUser}")
-    public ResponseEntity<?> getHistorialUser(@PathVariable String idUser){
-        System.out.println(historialService.getHistorial(idUser));
-        return new ResponseEntity(historialService.getHistorial(idUser),HttpStatus.OK);
+    @GetMapping("/getHistorial/{name}")
+    public ResponseEntity<?> getHistorialUser(@PathVariable String name){
+        System.out.println(historialService.getHistorial(name));
+        return new ResponseEntity(historialService.getHistorial(name),HttpStatus.OK);
+    }
+
+    @GetMapping("/podio/{idSala}")
+    public ResponseEntity<?> getPodioPlayes(@PathVariable String idSala){
+        return new ResponseEntity<>(salaService.infoPodioPlayers(idSala), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/update/bonus/{name}/{oro}/{exp}")
+    public ResponseEntity<?> updateBonus(@PathVariable String name, @PathVariable int oro, @PathVariable int exp){
+        return new ResponseEntity<>(personajeService.upDateBonus(name, oro, exp), HttpStatus.ACCEPTED);
     }
 
 }

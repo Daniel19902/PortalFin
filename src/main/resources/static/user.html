@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./styles/user.css" media="screen"/>
 
-
+    <script src="js/apiPortal.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/historial.js"></script>
 
 </head>
 <body onload="user.init()">
@@ -33,7 +34,7 @@
             <h1 class="display-1 title-portal"> Portal </h1>
             <div class="jugar-button d-grid"><button type="button" class="btn btn-primary btn-lg" onclick=" location.href = 'jugar.html'" id="jugar-id">Jugar</button></div>
             <div class="historial-tienda form-button d-grid">
-                <button type="button" class="btn btn-primary btn-lg" id="historial-id">Historial</button>
+                <button type="button" class="btn btn-primary btn-lg" id="historial-id" onclick="location.href = 'historial.html'">Historial</button>
                 <button type="button" class="btn btn-primary btn-lg" id="tienda-id">Tienda</button>
                 <button type="button" class="btn btn-primary btn-lg"> hola </button>
             </div>

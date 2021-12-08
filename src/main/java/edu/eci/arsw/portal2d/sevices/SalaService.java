@@ -1,5 +1,6 @@
 package edu.eci.arsw.portal2d.sevices;
 
+import edu.eci.arsw.portal2d.dto.PlayerDto;
 import edu.eci.arsw.portal2d.dto.SalaDto;
 import edu.eci.arsw.portal2d.model.Sala;
 import edu.eci.arsw.portal2d.model.User;
@@ -21,5 +22,7 @@ public interface SalaService {
     Sala getSala();
 
     void crearPartida(String idSala, String idUser);
+
+    List<PlayerDto> infoPodioPlayers(String idSala);
 
 }
