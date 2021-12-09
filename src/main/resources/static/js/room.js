@@ -93,7 +93,6 @@ var room = (function (){
     let publicarMensaje = function (mensaje){
         console.log(mensaje);
         let contenido = $('#chatbox').val();
-        alert(contenido);
         $('#chatbox').html(contenido+"\n"+mensaje);
     }
 

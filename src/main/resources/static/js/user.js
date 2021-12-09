@@ -19,6 +19,7 @@ var user = (function (){
     return{
 
         init : function (){
+            console.log("entre user.inti");
             let infoUser = JSON.parse(localStorage.getItem("id"));
             $('#nombre-id').html(infoUser.nombre);
             $('#oro-id').html("Oro: "+infoUser.oro);

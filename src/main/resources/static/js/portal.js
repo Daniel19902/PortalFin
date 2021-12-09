@@ -7,7 +7,7 @@ var portal = (function (){
     let infoUser = JSON.parse(localStorage.getItem("id"));
     let skin = JSON.parse(localStorage.getItem("skinEscogida"));
     let skinJuego = "goku";
-    let img = new Image();
+
 
     let paintPlayers = function (players){
         console.log(players);
@@ -17,11 +17,12 @@ var portal = (function (){
         for(let i = 0; i < players.length; i++){
             let img = new Image();
             console.log(img.sizes);
-            img.src = "assets/"+skin+".png";
             if(players[i].name != infoUser.nombre) {
                 ctx.beginPath();
-                ctx.drawImage(img, players[i].x, players[i].y);
-                //ctx.arc(players[i].x, players[i].y, 10, 0, 2 * Math.PI);
+                //ctx.drawImage(img, players[i].x, players[i].y);
+                ctx.arc(players[i].x, players[i].y, 10, 0, 2 * Math.PI);
+                ctx.fillStyle="#f99";
+                ctx.fill();
                 ctx.stroke();
             }
         }

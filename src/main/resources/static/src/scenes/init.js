@@ -12,7 +12,7 @@ const confing = {
             gravity: {
                 y: 500
             },
-            debug: true
+            debug: false
         }
 
     },
