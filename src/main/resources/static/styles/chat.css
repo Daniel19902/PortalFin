@@ -10,27 +10,124 @@ a {
     text-decoration:none; }
 
 a:hover { text-decoration:underline; }
+body{
+    height: 100vh;
+}
+body {
+    background-color: red;
+    background-image: url(fondoRoom.gif);
+    background-size: 200% 100%;
+}
+.forma-perfil{
+    height: 100%;
+    display: flex;
+}
+.perfil{
+    margin-top: 3%;
+    width: 80%;
+    height: 100%;
+    text-shadow:1px 1px 2px black, 0 0 1em White, 0 0 0.2em #1F222A;
 
 
+}
+.infor{
 
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 100%;
+    background-size: 100% 100%;
+
+}
 #loginform { padding-top:18px; }
 
 #loginform p { margin: 5px; }
 
+.line-1{
+    position: relative;
+    top: 0px;
+    width: 5em;
+    border-right: 2px solid rgba(255,255,255,.75);
+    color: #3F3C46;
+    font-size: 300%;
+    text-align: left;
+}
+
 #chatbox {
+    margin-left: 0.5%;
     text-align:left;
-    margin:0 auto;
+    text-color:#FFFFFF;
     margin-bottom:25px;
     padding:10px;
-    background:#fff;
+    background:#2B2E32;
     height:270px;
     width:430px;
-    border:1px solid #ACD8F0;
+    border:2px solid rgba(255,255,255,.75);
     overflow:auto; }
 
+.table-form{
+    text-align: center;
+    width: 50%;
+    margin-top: -25px;
+
+}
+
+.button-blue {
+    outline: 0;
+    position: relative;
+    left: 1%;
+    top:-40 px;
+    display: inline-block;
+    padding: 5px 20px;
+    font-size: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #4b00ff;
+    background: #4b00ff;
+    color: #ffffff;
+    font-weight: 500;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.button-blue:hover {
+    background-color: #0C002B;
+    color: #fff;
+    box-shadow: 0 0 5px #4b00ff,
+                0 0 20px rgb(75 0 255 / 0.8),
+                0 0 35px rgb(75 0 255 / 0.7),
+                0 0 50px rgb(75 0 255 / 0.6);
+    border-color: #fff;
+
+}
+.button-yellow {
+    outline: 0;
+    position: relative;
+    left: 20%;
+    top: 10px;
+    display: inline-block;
+    padding: 10px 40px;
+    font-size: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #FFFF00;
+    background: #FFFF00;
+    color: #000;
+    font-weight: 600;
+    transition: box-shadow 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+.button-yellow:hover {
+    background-color: #FFFF00;
+    color: #000;
+    box-shadow: 0 0 5px #FFFF00,
+                0 0 20px rgb(255 255 0 / 0.8),
+                0 0 35px rgb(255 255 0 / 0.7),
+                0 0 50px rgb(255 255 0 / 0.6);
+    border-color: #FFF;
+}
 #usermsg {
+    margin-left: 0.5%;
     width:430px;
     border:1px solid #ACD8F0;
+    color:#FFFFFF;
+    background:#2B2E32;
     height: 30px}
 
 #submit { width: 80px; }

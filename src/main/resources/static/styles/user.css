@@ -18,6 +18,7 @@ body {
 .perfil{
     width: 35%;
     height: 100%;
+    text-shadow:1px 1px 2px black, 0 0 1em yellow, 0 0 0.2em #F4D03F;
     background-color: whitesmoke;
 
 }
@@ -39,29 +40,43 @@ body {
 .jugar{
     width: 100%;
     background-color: cadetblue;
+    background-image: url(fondo.jpg);
+    background-size: 100% 100%;
 
 }
 
 .title-portal{
-    margin-top: 10%;
-    text-align: center;
-    font-family: "Arial Black", cursive;
+    width: 400px;
+    height: 200px;
+    margin: auto;
+    background-image: url(TituloPortal2d.gif);
+    background-size: 100% 100%;
+
 }
 
 .nivel{
     position: relative;
     text-align: center;
-    left: 45%;
-    top: -25px;
-    width: 10%;
-    height: 5%;
-    background-color: red;
-    z-index: 1;
+
+
+    color: #808B96;
+    font-family: "Arial Black", cursive;
+    -webkit-text-stroke: 2px #566573;
+    font-size: 30px;
+    left: 42%;
+    top: -30px;
+    width: 80px;
+    height: 50px;
+    background-image: url(nivel.png);
+    background-size: 100% 100%;
+    z-index: 0;
 }
 
 .bar-p{
+
     width: var(--progreso-div);
     height: 20px;
+    background-color: red;
 
 }
 
@@ -74,20 +89,128 @@ body {
 }
 
 .jugar-button{
-    width: 25%;
-    margin-top: 80px;
-    margin-left: 38%;
-
+    width: 200px;
+      height: 60px;
+      background: transparent;
+      position: absolute;
+      top: 50%;
+      left:62.5%;
+      transform: translate(-50%, -50%);
+      border-radius: 5px;
+      cursor: pointer;
+      overflow: hidden;
+}
+.jugar-button::before{
+  content: 'Jugar';
+  color: white;
+  font-weight:1000;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-in-out;
 }
 
-.historial-tienda{
 
-    width: 150px;
-    height: 20%;
-    margin-left: 20px;
-    margin-top: 20%;
-    text-align: left;
+.jugar-button::after {
+  font-family: 'FontAwesome' ;
+  content: url(Portal2Logo.png);
+  font-size: 50px;
+  color: red;
+  position: absolute;
+  top: 150%;
+  left:85%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-in-out;
+}
 
+.jugar-button:hover::after {
+  top: 65%;
+}
+
+.historial{
+
+    width: 200px;
+      height: 60px;
+      background: transparent;
+      position: absolute;
+      top: 80%;
+      left:62.5%;
+      transform: translate(-50%, -50%);
+      border-radius: 5px;
+      cursor: pointer;
+      overflow: hidden;
+}
+.historial::before{
+  content: 'Historial';
+  color: white;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-in-out;
+}
+
+
+.historial::after {
+  font-family: 'FontAwesome' ;
+  content: url(historial.gif);
+  font-size: 70px;
+  color: red;
+  position: absolute;
+  top: 160%;
+  left:85%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-in-out;
+}
+
+.historial:hover::after {
+  top: 65%;
+}
+
+.tienda{
+    width: 200px;
+      height: 60px;
+      background: transparent;
+      position: absolute;
+      top: 65%;
+      left:62.5%;
+      transform: translate(-50%, -50%);
+      border-radius: 5px;
+      cursor: pointer;
+      overflow: hidden;
+}
+.tienda::before{
+  content: 'Tienda';
+  color: white;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-in-out;
+}
+
+
+.tienda::after {
+  font-family: 'FontAwesome' ;
+  content: url(tienda.png);
+  font-size: 50px;
+  color: red;
+  position: absolute;
+  top: 160%;
+  left:85%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-in-out;
+}
+
+.tienda:hover::after {
+  top: 65%;
 }
 
 .form-button button[type="button"]{
@@ -99,12 +222,13 @@ body {
 
 .oro{
     position: relative;
-    left: 25%;
+    left: 40%;
     width: 50%;
     height: 20px;
-    top: 10px;
-    color: blueviolet;
-    font-family: "Arial Black", cursive;
+    top: 20px;
+    text-shadow: 1px 1px 2px black, 0 0 1em #F4D03F, 0 0 0.2em #F4D03F;
+    color: #F4D03F ;
+    font: 1.5em Georgia, "Bitstream Charter", "URW Bookman L", "Century Schoolbook L", serif;
 
 }
 

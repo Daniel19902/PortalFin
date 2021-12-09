@@ -1,0 +1,18 @@
+header {
+    background-color: red;
+
+}
+body {
+    background-color: red;
+    background-image: url(fondoindex.png);
+    background-size: 100% 155%
+}
+
+.nivel{
+
+
+
+    text-align: left;
+    text-color:#B3B6B7;
+    width: 60%
+}

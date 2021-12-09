@@ -6,7 +6,7 @@ class Portal extends Phaser.GameObjects.Sprite{
         scene.physics.world.enable(this);
         this.name = type;
         this.body.setAllowGravity(false);
-        this.body.setSize(this.width+15,this.height-40,true);
+        this.body.setSize(this.width+10,this.height-50,true);
         
     }
     setAngleBox(angulo){

@@ -38,6 +38,17 @@ public class PersonajeImpl implements PersonajeService {
         return  user;
     }
 
+    @Override
+    public int comprarSkin(int precio, String nombre) {
+        Personaje personaje = personajeRepository.findPersonajeByNombre(nombre).get();
+        if (personaje.getOro() >= precio) {
+            personaje.setOro(-precio);
+            personajeRepository.save(personaje);
+            return personaje.getOro();
+        }
+        return -100;
+    }
+
     public void updateNivel(Personaje user){
         if(user.getExperiencia() >= user.getNivel()*numeroExp){
             System.out.println(user.getNivel()*numeroExp-user.getExperiencia());

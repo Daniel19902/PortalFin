@@ -119,7 +119,18 @@ var apiPortal = (function (){
             }).fail(function (jqXHR, textStatus){
                 console.log("error en el bonus:"+jqXHR+" "+textStatus);
             });
+        },
+
+        comprarSkin : function (precio, nombre){
+            return $.ajax({
+                url: "api/portal/comprar/skin/"+precio+"/"+nombre,
+                type: 'PUT',
+                contentType: "application/json"
+            }).fail(function (jqXHR, textStatus){
+                console.log("error en el bonus:"+jqXHR+" "+textStatus);
+            });
         }
+
     }
 
 })();

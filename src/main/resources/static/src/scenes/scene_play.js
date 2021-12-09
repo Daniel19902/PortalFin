@@ -1,11 +1,16 @@
 import Personaje from "../gameObjects/personaje.js";
 import Portal from "../gameObjects/portal.js";
-//import room from "../../js/room.js";
+import Disparo from "../gameObjects/disparoPortal.js";
 
+var songPortal;
 var azul;
 var naranja;
+var azul2;
+var naranja2;
+var mousevar;
+var ball;
+var disparo;
 var ron = portal;
-
 class Scene_play extends Phaser.Scene{
     constructor(){
         super({key: "Scene_play"});
@@ -17,20 +22,27 @@ class Scene_play extends Phaser.Scene{
 
     create(){
         //mapa
-        
+
         this.mapa = this.make.tilemap({key: "mapa"});
         var tilesets = this.mapa.addTilesetImage("test-mapa","tiles");
-
-        this.fondo = this.mapa.createLayer("fondo",tilesets,0,0);
-        this.bloques = this.mapa.createLayer("bloques",tilesets,0,0);
+        var tilesets1 = this.mapa.addTilesetImage("pista","tiles1");
+        var fondo = this.mapa.createDynamicLayer("fondo",tilesets1,0,0);
+        var bloques = this.mapa.createDynamicLayer("bloques",tilesets,0,0);
+        //mousevar= this.input.setDefaultCursor('url(/assets/mira.png), pointer');
+       // this.mousevar;
+        //songPortal = this.add.audio('songPortal');
+        //this.songPortal.allowMultiple = true;
 
         
 
-        this.bloques.setCollisionByProperty({solido:true});
+        bloques.setCollisionByProperty({piso:true,pared:true,relleno:true});
+
+
 
         // vrear personaje
-        this.personaje = new Personaje(this,0,0,"goku");
-
+        this.personaje = new Personaje(this,0,474,"goku");
+        //disparo = new Disparo(this,350,200,"ball");
+        //this.disparo;
         this.anims.create({
                 key: 'caminar',
                 frames: this.anims.generateFrameNumbers('goku', { start: 1, end: 8 }),
@@ -40,8 +52,11 @@ class Scene_play extends Phaser.Scene{
         console.log(this.personaje.width+"esto es ancho");
         console.log(this.personaje.body.width+"esto es ancho body");
         console.log(this.personaje.type);
-        
-        this.io = this.mapa.createLayer("io",tilesets,0,0);
+
+
+
+
+
         
         // crear eventps de teclado
 
@@ -49,40 +64,67 @@ class Scene_play extends Phaser.Scene{
 
         //portales
         //portales en el suelo
-        azul = new Portal(this,286,512,"azul");
-        naranja = new Portal(this,544,512,"naranja");
+        //azul = new Portal(this,286,512,"azul");
+        //naranja = new Portal(this,544,512,"naranja");
 
         //techo suelo
         //azul = new Portal(this,286,512,"azul");
         //naranja = new Portal(this,286,32,"naranja");
 
         //suelo pared
-        //azul = new Portal(this,318,480,"azul");
-        //naranja = new Portal(this,544,512,"naranja");
+        azul = new Portal(this,35,62,"azul");
+        naranja = new Portal(this,253,478,"naranja");
+        azul2 = new Portal(this,929,62,"azul2");
+        naranja2 = new Portal(this,927,160,"naranja2");
        
-       
-        azul.setAngleBox(90);
-        naranja.setAngleBox(90);
-        
+        azul.setAngleBox(0);
+        naranja.setAngleBox(0);
+        azul2.setAngleBox(180);
+        naranja2.setAngleBox(180);
         
         
         
 
-        console.log(azul.angle+" "+naranja.angle+" angulos azul y naranja");
-        console.log(naranja.name+" el nombre");
+        //console.log(azul.angle+" "+naranja.angle+" angulos azul y naranja");-
+        //console.log(naranja.name+" el nombre");-
 
 
         //colision
 
-        this.physics.add.collider(this.personaje,this.bloques,bloquesColision,condicionColision,this);
+        this.physics.add.collider(this.personaje,bloques,bloquesColision,condicionColision,this);
 
+
+        this.physics.add.overlap(bloques,this.personaje,bloquesColision,dispararPortal,this);
+        this.physics.add.overlap(this.personaje, azul2, colisionPortalAndPersonaje, overlapPortalAndPersonaje, this);
+
+        this.physics.add.overlap(this.personaje, naranja2, colisionPortalAndPersonaje, overlapPortalAndPersonaje, this);
         this.physics.add.overlap(this.personaje, azul, colisionPortalAndPersonaje, overlapPortalAndPersonaje, this);
 
         this.physics.add.overlap(this.personaje, naranja, colisionPortalAndPersonaje, overlapPortalAndPersonaje, this);
 
+
+        
+        
+        
+
+        
+
+        
+
     }
     update(){
+
+        //if (this.input.mousePointer.isDown)
+            //{
+                //disparo.x= pointer.x;
+               // disparo.y= pointre.y;
+               // console.log(mousevar.x,mousevar.y);
+
+
+
+          // }
         if(this.cursor.left.isDown){
+
             if(ron.getPartida()) {
                 this.personaje.body.setVelocityX(-150);
                 this.personaje.flipX = true;
@@ -106,7 +148,7 @@ class Scene_play extends Phaser.Scene{
         }
         if (this.cursor.up.isDown &&  this.personaje.body.onFloor()){
 
-                    this.personaje.body.setVelocityY(-200);
+                    this.personaje.body.setVelocityY(-254);
                 }
                 if(this.cursor.down.isDown){
                     console.log("desac");
@@ -129,7 +171,12 @@ function overlapPortalAndPersonaje(personaje,portal) {
 }
 
 function  colisionPortalAndPersonaje(personaje,portal) {
+    if(portal.name=="azul" ||portal.name=="naranja" ){
     var otroPortal = portal.name=="azul"?naranja:azul;
+    }else{
+    var otroPortal = portal.name=="azul2"?naranja2:azul2;
+    }
+    //songPortal.play();
     personaje.inPortal=true;
     teleport(personaje,otroPortal)
     conservacionDeVelocidad(personaje,otroPortal,portal);
@@ -137,13 +184,13 @@ function  colisionPortalAndPersonaje(personaje,portal) {
 }
 function teleport(personaje,otroPortal) {
      if(otroPortal.angle==0){
-        personaje.x=otroPortal.x+personaje.width/2-5;
+        personaje.x=otroPortal.x+personaje.width/2-20;
         personaje.y=otroPortal.y;
     }else if(otroPortal.angle==90){
         personaje.x=otroPortal.x;
         personaje.y=otroPortal.y-personaje.height/2;
     }else if(otroPortal.angle==180 || otroPortal.angle==-180){
-        personaje.x=otroPortal.x-personaje.width/2;
+        personaje.x=otroPortal.x-personaje.width/2-15;
         personaje.y=otroPortal.y;
     }else if(otroPortal.angle==270 || otroPortal.angle==-90 ){
         personaje.x=otroPortal.x;
@@ -167,13 +214,27 @@ function conservacionDeVelocidad(personaje,otroPortal,portal){
     }
 }
 
-function bloquesColision(personaje,bloques) {
+function bloquesColision(disparo,bloques) {
     
+}
+function bloquesColisionDisparo(personaje,bloques) {
+
 }
 
 function condicionColision(personaje,bloques) {
     
     return !personaje.inPortal;
+}
+function condicionColisionDisparo(disparo,bloques) {
+
+    return !disparo.inPortal;
+}
+function dispararPortal(bloques){
+    //console.log(bloques.getValue(property.value));
+    //console.log(bloques.property);
+    //if(bloques.key==piso){
+        //console.log(mousevar.x);
+    //}
 }
 
 export default Scene_play;

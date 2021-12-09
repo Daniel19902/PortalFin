@@ -23,6 +23,8 @@ var room = (function (){
     let player = null;
     let partida = false;
     let conectado = false;
+    let skin = JSON.parse(localStorage.getItem("skin"));
+    let skinJuego = "";
 
     let update = function (users){
         console.log(users);
@@ -169,11 +171,34 @@ var room = (function (){
         });
     }
 
+
+    let cargarImagenes = function (){
+        $('#default').html('<img src="../assets/default.png" style="width: 100px"/>');
+        let path = "<img src=\"../assets/"+skin+".gif\" style=\"width: 100px\" />"
+        $('#skin').html(path);
+        console.log("cargar imagen");
+    }
+
     return{
+
+        escoger : function (skinCheck){
+            console.log(skinCheck);
+            if(skinCheck == "default"){
+                localStorage.setItem("skinEscogida", JSON.stringify(skinCheck));
+            }else {
+                localStorage.setItem("skinEscogida", JSON.stringify(skin));
+            }
+        },
+
+        comprar : function (){
+            console.log("entre");
+            cargarImagenes();
+        },
 
         init: function (){
             identificador = JSON.parse(localStorage.getItem("id")).idSala;
             console.log(identificador);
+            cargarImagenes();
             connectAndSubscribe();
         },
 
@@ -194,6 +219,11 @@ var room = (function (){
             stompClient.send('/app/mensaje.'+identificador, {}, infoUser.nombre+": "+mensaje);
             $('#usermsg').val("");
         },
+
+        darSkin : function (){
+            console.log("entre skin");
+            return skinJuego;
+        }
 
     }
 })();

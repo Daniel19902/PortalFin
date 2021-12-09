@@ -12,4 +12,6 @@ public interface PersonajeService {
 
     Personaje upDateBonus(String name, int oro, int exp);
 
+    int comprarSkin(int precio, String nombre);
+
 }

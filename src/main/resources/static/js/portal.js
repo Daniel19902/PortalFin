@@ -5,6 +5,9 @@ var portal = (function (){
     let identificador = null;
     let partida = false;
     let infoUser = JSON.parse(localStorage.getItem("id"));
+    let skin = JSON.parse(localStorage.getItem("skinEscogida"));
+    let skinJuego = "goku";
+    let img = new Image();
 
     let paintPlayers = function (players){
         console.log(players);
@@ -12,8 +15,12 @@ var portal = (function (){
         let ctx = canvas.getContext("2d");
         ctx.clearRect(0,0,canvas.width,canvas.height);
         for(let i = 0; i < players.length; i++){
+            let img = new Image();
+            console.log(img.sizes);
+            img.src = "assets/"+skin+"2.png";
             if(players[i].name != infoUser.nombre) {
                 ctx.beginPath();
+                ctx.drawImage(img, players[i].x, players[i].y);
                 ctx.arc(players[i].x, players[i].y, 10, 0, 2 * Math.PI);
                 ctx.stroke();
             }
@@ -72,6 +79,31 @@ var portal = (function (){
 
         getPartida : function (){
             return partida;
+        },
+
+        test : function (){
+            console.log("entre");
+            let canvas = document.getElementById("test");
+            let ctx = canvas.getContext("2d");
+            let img = new Image();
+            img.src = "assets/goku.gif";
+            ctx.drawImage(img, 500, 10);
+        },
+
+        darSkin : function (){
+            if(skin == "naruto"){
+                skinJuego = "personaje2";
+            }
+            else if(skin == "pikachu"){
+                skinJuego = "personaje3";
+            }
+            else if(skin == "goku"){
+                skinJuego = "personaje4";
+            }else {
+                skinJuego = "personaje1";
+            }
+            console.log("entre skin");
+            return skinJuego;
         }
 
     };

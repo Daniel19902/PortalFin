@@ -136,4 +136,13 @@ public class UserController {
         return new ResponseEntity<>(personajeService.upDateBonus(name, oro, exp), HttpStatus.ACCEPTED);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = "/comprar/skin/{precio}/{nombre}")
+    public ResponseEntity<?> comprarSkin(@PathVariable int precio, @PathVariable String nombre){
+        int dinero = personajeService.comprarSkin(precio, nombre);
+        if(dinero != -100){
+            return new ResponseEntity<>(dinero, HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>("no hay oro suficiente para esta skin", HttpStatus.NOT_ACCEPTABLE);
+    }
+
 }
