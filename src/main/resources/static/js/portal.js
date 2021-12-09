@@ -17,11 +17,11 @@ var portal = (function (){
         for(let i = 0; i < players.length; i++){
             let img = new Image();
             console.log(img.sizes);
-            img.src = "assets/"+skin+"2.png";
+            img.src = "assets/"+skin+".png";
             if(players[i].name != infoUser.nombre) {
                 ctx.beginPath();
                 ctx.drawImage(img, players[i].x, players[i].y);
-                ctx.arc(players[i].x, players[i].y, 10, 0, 2 * Math.PI);
+                //ctx.arc(players[i].x, players[i].y, 10, 0, 2 * Math.PI);
                 ctx.stroke();
             }
         }
